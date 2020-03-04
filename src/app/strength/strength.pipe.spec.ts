@@ -10,7 +10,7 @@ describe("strength pipe", () => {
     expect(val).toEqual("5 (weak)");
   });
 
-  it("should display strong ig strength is 10", () => {
+  it("should display strong if strength is 10", () => {
     let pipe = new StrengthPipe();
 
     let val = pipe.transform(10);
