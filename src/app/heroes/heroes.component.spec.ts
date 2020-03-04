@@ -1,29 +1,29 @@
-import { HeroesComponent } from "./heroes.component";
-import { of } from "rxjs";
+import { HeroesComponent } from './heroes.component';
+import { of } from 'rxjs';
 
-describe("HeroesComponent", () => {
+describe('HeroesComponent', () => {
   let component: HeroesComponent;
   let HEROES;
   let mockHeroService;
 
   beforeEach(() => {
     HEROES = [
-      { id: 1, name: "SpiderDude", strength: 8 },
-      { id: 2, name: "WonderfulWoman", strength: 24 },
-      { id: 3, name: "SuperDude", strength: 55 }
+      { id: 1, name: 'SpiderDude', strength: 8 },
+      { id: 2, name: 'WonderfulWoman', strength: 24 },
+      { id: 3, name: 'SuperDude', strength: 55 }
     ];
 
     mockHeroService = jasmine.createSpyObj([
-      "getHeroes",
-      "addHero",
-      "deleteHero"
+      'getHeroes',
+      'addHero',
+      'deleteHero'
     ]);
 
     component = new HeroesComponent(mockHeroService);
   });
 
-  describe("delete", () => {
-    it("should decrease number of heroes by one", () => {
+  describe('delete', () => {
+    it('should decrease number of heroes by one', () => {
       mockHeroService.deleteHero.and.returnValue(of(true));
 
       component.heroes = HEROES;
@@ -32,7 +32,7 @@ describe("HeroesComponent", () => {
       expect(component.heroes.length).toBe(2);
     });
 
-    it("should remove the correct hero from the list", () => {
+    it('should remove the correct hero from the list', () => {
       //arrange
       mockHeroService.deleteHero.and.returnValue(of(true));
       component.heroes = HEROES;
@@ -45,7 +45,7 @@ describe("HeroesComponent", () => {
       expect(component.heroes).toEqual(remainingHeroes);
     });
 
-    it("should call deleteHero with the correct hero", () => {
+    it('should call deleteHero with the correct hero', () => {
       //arrange
       mockHeroService.deleteHero.and.returnValue(of(true));
       component.heroes = HEROES;
